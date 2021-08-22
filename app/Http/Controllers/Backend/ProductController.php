@@ -22,14 +22,18 @@ class ProductController extends Controller
     public function store(Request $request){
         //dd($request->all());
         //dd($request->input('name'));
+        //dd($request->all());
+        $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
+        //dd($newName);
+        $request->photo->move('uploads/products/',$newName);
 
         $data=[
             'name'=>$request->input('name'),
             'price'=>$request->input('price'),
-            'desc'=>$request->input('desc')
+            'desc'=>$request->input('desc'),
+            'photo'=>$newName
         ];
 
-        //dd($data);
         Product::create($data);
         return redirect()->route('admin.product');
     }
@@ -51,6 +55,17 @@ class ProductController extends Controller
             'desc'=>$request->input('desc')
         ];
         $product->update($data);
+
+        //photo edit portion
+        if ($request->file('photo')){
+            if(file_exists('uploads/products/'.$product->photo)){
+                unlink('uploads/products/'.$product->photo);
+            }
+            $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
+            $request->photo->move('uploads/products/',$newName);
+            //$product->photo($newName);
+            $product->update(['photo'=>$newName]);
+        }
         return redirect()->route('admin.product');
     }
 
@@ -58,6 +73,11 @@ class ProductController extends Controller
         //dd($id);
         //Product::where('id',$id)->delete();
         $product=Product::find($id);
+
+        if(file_exists('uploads/products/'.$product->photo)){
+            unlink('uploads/products/'.$product->photo);
+        }
+
         $product->delete();
         return redirect()->back();
 

@@ -7,7 +7,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h2 class="text-center">Create New Product</h2>
-                <form method="post" action="{{route('admin.product.create')}}">
+                <form method="post" action="{{route('admin.product.create')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Product Name</label>
@@ -20,6 +20,10 @@
                     <div class="mb-3">
                         <label for="desc" class="form-label">Product Description</label>
                         <textarea class="form-control" name="desc" id="desc" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Product Photo</label>
+                        <input type="file" class="form-control" id="photo" name="photo">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

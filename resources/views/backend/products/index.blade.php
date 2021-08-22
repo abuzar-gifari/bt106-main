@@ -10,6 +10,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Description</th>
+                <th scope="col">Photo</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -20,6 +21,9 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->price}} BDT</td>
                 <td>{{$product->desc}}</td>
+                <td>
+                    <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" style="height: 50px;">
+                </td>
                 <td>
                     <a href="{{route('admin.product.edit',$product->id)}}" class="btn btn-primary">Edit</a>
                     <a href="{{route('admin.product.delete',$product->id)}}" class="btn btn-warning">Delete</a>
