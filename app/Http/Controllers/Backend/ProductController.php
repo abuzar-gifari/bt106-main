@@ -23,19 +23,36 @@ class ProductController extends Controller
         //dd($request->all());
         //dd($request->input('name'));
         //dd($request->all());
-        $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
-        //dd($newName);
-        $request->photo->move('uploads/products/',$newName);
 
-        $data=[
-            'name'=>$request->input('name'),
-            'price'=>$request->input('price'),
-            'desc'=>$request->input('desc'),
-            'photo'=>$newName
-        ];
+        try {
+            $request->validate([
+                'name'=>'required|min:5|max:255|string|regex:/^[a-zA-Z ]+$/',
+                'price'=>'required',
+                'desc'=>'required',
+                'photo'=>'required|image'
+            ],$messages = [
+                'name.required' => 'The product name is required.',
+                'price.required' => 'The product price is required.',
+                'desc.required' => 'The product description is required.'
+            ]);
 
-        Product::create($data);
-        return redirect()->route('admin.product');
+            $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
+            //dd($newName);
+            $request->photo->move('uploads/products/',$newName);
+
+            $data=[
+                'name'=>$request->input('name'),
+                'price'=>$request->input('price'),
+                'desc'=>$request->input('desc'),
+                'photo'=>$newName
+            ];
+
+            Product::create($data);
+            return redirect()->route('admin.product');
+        }catch (\Exception $exception){
+            $errors = $exception->validator->getMessageBag();
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
     }
 
     public function edit($id){
@@ -48,25 +65,41 @@ class ProductController extends Controller
 
     public function update(Request $request,$id){
         //dd($request->all());
-        $product=Product::find($id);
-        $data=[
-            'name'=>$request->input('name'),
-            'price'=>$request->input('price'),
-            'desc'=>$request->input('desc')
-        ];
-        $product->update($data);
 
-        //photo edit portion
-        if ($request->file('photo')){
-            if(file_exists('uploads/products/'.$product->photo)){
-                unlink('uploads/products/'.$product->photo);
+        try {
+            $request->validate([
+                'name'=>'required|min:5|max:255|string|regex:/^[a-zA-Z ]+$/',
+                'price'=>'required',
+                'desc'=>'required',
+                'photo'=>'image'
+            ],$messages = [
+                'name.required' => 'The product name is required.',
+                'price.required' => 'The product price is required.',
+                'desc.required' => 'The product description is required.'
+            ]);
+            $product=Product::find($id);
+            $data=[
+                'name'=>$request->input('name'),
+                'price'=>$request->input('price'),
+                'desc'=>$request->input('desc')
+            ];
+            $product->update($data);
+
+            //photo edit portion
+            if ($request->file('photo')){
+                if(file_exists('uploads/products/'.$product->photo)){
+                    unlink('uploads/products/'.$product->photo);
+                }
+                $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
+                $request->photo->move('uploads/products/',$newName);
+                //$product->photo($newName);
+                $product->update(['photo'=>$newName]);
             }
-            $newName = 'product_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
-            $request->photo->move('uploads/products/',$newName);
-            //$product->photo($newName);
-            $product->update(['photo'=>$newName]);
+            return redirect()->route('admin.product');
+        }catch (\Exception $exception){
+            $errors = $exception->validator->getMessageBag();
+            return redirect()->back()->withErrors($errors)->withInput();
         }
-        return redirect()->route('admin.product');
     }
 
     public function delete($id){

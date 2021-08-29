@@ -11,3 +11,12 @@ Route::post('/products/create',[\App\Http\Controllers\Backend\ProductController:
 Route::get('/products/edit/{id}',[\App\Http\Controllers\Backend\ProductController::class,'edit'])->name('admin.product.edit');
 Route::post('/products/edit/{id}',[\App\Http\Controllers\Backend\ProductController::class,'update']);
 Route::get('/products/delete/{id}',[\App\Http\Controllers\Backend\ProductController::class,'delete'])->name('admin.product.delete');
+
+//Users Route
+Route::get('users',[\App\Http\Controllers\Backend\UserController::class,'index'])->name('admin.user');
+Route::get('users/create',[\App\Http\Controllers\Backend\UserController::class,'create'])->name('admin.user.create');
+Route::post('users/create',[\App\Http\Controllers\Backend\UserController::class,'store']);
+
+
+
+
