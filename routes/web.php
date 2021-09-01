@@ -23,3 +23,7 @@ Route::post('login',[\App\Http\Controllers\Backend\LoginController::class,'doLog
 
 //Sign Out Route
 Route::get('logout',[\App\Http\Controllers\Backend\LoginController::class,'logout'])->name('logout');
+
+//Profile route
+Route::get('profile',[\App\Http\Controllers\Backend\LoginController::class,'profile'])->name('profile');
+
