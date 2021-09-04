@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Backend\DashboardController;
 
-
 Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
 Route::get('/products',[\App\Http\Controllers\Backend\ProductController::class,'index'])->name('admin.product');
 Route::get('/products/create',[\App\Http\Controllers\Backend\ProductController::class,'create'])->name('admin.product.create');
@@ -26,4 +25,3 @@ Route::get('logout',[\App\Http\Controllers\Backend\LoginController::class,'logou
 
 //Profile route
 Route::get('profile',[\App\Http\Controllers\Backend\LoginController::class,'profile'])->name('profile');
-
