@@ -17,9 +17,9 @@
     <div class="row align-items-center mt-5">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <form action="{{route('login')}}" method="post">
+            <form action="{{route('login')}}" method="post" class="" style="padding: 40px; border-radius: 2%; background-color: whitesmoke ">
                 @csrf
-                <h3 class="text-center" style="font-family: 'Inconsolata', monospace;">Login Form</h3>
+                <h3 class="text-center h2" style="font-family: 'Inconsolata', monospace;">Login Form</h3>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
