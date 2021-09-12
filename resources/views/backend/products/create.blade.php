@@ -7,6 +7,12 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h2 class="text-center">Create New Product</h2>
+                @if (session()->has('msg'))
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <strong>{{ session()->get('msg') }}</strong> 
+                    </div>    
+                @endif
+                
                 <form method="post" action="{{route('admin.product.create')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">

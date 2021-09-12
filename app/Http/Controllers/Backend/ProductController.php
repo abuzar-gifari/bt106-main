@@ -48,7 +48,7 @@ class ProductController extends Controller
             ];
 
             Product::create($data);
-            return redirect()->route('admin.product');
+            return redirect()->back()->with('msg','Data Inserted Successfully!');
         }catch (\Exception $exception){
             $errors = $exception->validator->getMessageBag();
             return redirect()->back()->withErrors($errors)->withInput();
