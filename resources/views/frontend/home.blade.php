@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="card shadow-sm">
                     
-                    <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" height="200px">
+                    <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" height="250px">
 
                     <div class="card-body">
                         <p class="h3">{{ $product->name }}</p>

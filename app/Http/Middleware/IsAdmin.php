@@ -19,6 +19,6 @@ class IsAdmin
         if (auth()->user()->role == 'admin'){
             return $next($request);
         }
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

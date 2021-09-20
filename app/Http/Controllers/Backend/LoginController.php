@@ -11,6 +11,12 @@ class LoginController extends Controller
 {
     public function login()
     {
+        if (auth()->user()) {
+            if (auth()->user()->role=="admin" ) {
+                return redirect()->route('admin.dashboard');
+            }
+            return redirect()->route('home');
+        }
         return view('auth.login');
     }
 
@@ -27,7 +33,10 @@ class LoginController extends Controller
             //dd(Auth::attempt($creds)); returns true or false
 
             if(Auth::attempt($creds)){
-                return redirect()->route('admin.dashboard');
+                if (auth()->user()->role=="admin" ) {
+                    return redirect()->route('admin.dashboard');
+                }
+                return redirect()->route('home');
             }else{
                 return redirect()->back();
             }
