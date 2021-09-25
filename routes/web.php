@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('profile',[\App\Http\Controllers\Frontend\UserController::class,'profile'])->name('user.profile');
     Route::post('profile',[\App\Http\Controllers\Frontend\UserController::class,'updateProfile']);
 
+    // Add To Cart
+    Route::get('add/cart/{id}',[\App\Http\Controllers\Frontend\CartController::class,'cart'])->name('add.cart');
+    Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'show'])->name('add.cart.show');
+
 
     Route::get('logout', [\App\Http\Controllers\Backend\LoginController::class, 'logout'])->name('logout');
     Route::prefix('dashboard')->group(function () {

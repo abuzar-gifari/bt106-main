@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use mysql_xdevapi\Exception;
 
 class LoginController extends Controller
@@ -36,10 +37,13 @@ class LoginController extends Controller
                 if (auth()->user()->role=="admin" ) {
                     return redirect()->route('admin.dashboard');
                 }
+                Session::flash('message','Login successfully');
+                Session::flash('alert','success');
                 return redirect()->route('home');
-            }else{
-                return redirect()->back();
             }
+            Session::flash('message','Inavalid credentials');
+            Session::flash('alert','danger');
+            return redirect()->back();
 
         }catch (\Exception $exception){
             $errors = $exception->validator->getMessageBag();

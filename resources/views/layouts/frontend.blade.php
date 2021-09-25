@@ -39,6 +39,11 @@
 
 <main>
 
+  {{-- we can use session() method instead of Session:: --}}
+  @if (Session::has('message'))
+    <p class="alert alert-{{ Session::get('alert') }}">{{ Session::get('message') }}</p>
+  @endif
+
   @yield('main')
 
 </main>
