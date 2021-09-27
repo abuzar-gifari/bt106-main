@@ -10,44 +10,47 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function profile(){
+    public function profile()
+    {
         return view('frontend.profile');
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
 
 
         $request->validate([
-            'name'=>'required',
-            'phone'=>'required',
-            'address'=>'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
         $user = auth()->user();
-        $inputs=[
-            'name'=> $request->input('name'), 
-            'phone'=> $request->input('phone'), 
-            'address'=> $request->input('address')
+        $inputs = [
+            'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address')
         ];
 
         $user->update($inputs);
 
-        if ($request->file('photo')){
-            if(file_exists('uploads/user/'.$user->photo)){
-                unlink('uploads/user/'.$user->photo);
+        if ($request->file('photo')) {
+            if (file_exists('uploads/user/' . $user->photo)) {
+                unlink('uploads/user/' . $user->photo);
             }
-            $newName = 'user_'.time().'.'.$request->file('photo')->getClientOriginalExtension();
-            $request->photo->move('uploads/user/',$newName);
+            $newName = 'user_' . time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->photo->move('uploads/user/', $newName);
             //$product->photo($newName);
-            $user->update(['photo'=>$newName]);
+            $user->update(['photo' => $newName]);
         }
         return redirect()->back();
     }
 
 
 
-    public function register(){
+    public function register()
+    {
         if (auth()->user()) {
-            if (auth()->user()->role=="admin" ) {
+            if (auth()->user()->role == 'admin') {
                 return redirect()->route('admin.dashboard');
             }
             return redirect()->route('home');
@@ -55,26 +58,25 @@ class UserController extends Controller
         return view('auth.register');
     }
 
-    public function doRegister(Request $request){
+    public function doRegister(Request $request)
+    {
         $request->validate([
-            'name'=>'required',
-            'phone'=>'required',
-            'address'=>'required',
-            'email'=>'required',
-            'password'=>'required',
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:3',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
+        $inputs = [
+            'name'=> $request->input('name'),
+            'email'=> $request->input('email'),
+            'password'=>Hash::make ($request->input('password')),
+            'phone'=> $request->input('phone'),
+            'address'=> $request->input('address'),
+            'role'=> 'customer',
 
-        $inputs=[
-            'name'=> $request->input('name'), 
-            'phone'=> $request->input('phone'), 
-            'address'=> $request->input('address'), 
-            'email'=> $request->input('email'), 
-            'role'=> 'customer', 
-            'password'=> Hash::make($request->input('password')) 
         ];
-
         User::create($inputs);
         return redirect()->route('login');
-        // dd($inputs);
     }
 }

@@ -4,15 +4,18 @@
     Home
 @endsection
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+
 @section('main')
-<section class="py-5 text-center container">
+<section class="py-5 text-center container" style="font-family: 'Bree Serif', serif;">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Album example</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
         <p>
           <a href="{{ route('add.cart.show') }}" class="btn btn-primary my-2">Show Cart Page</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
         </p>
       </div>
     </div>
@@ -20,7 +23,7 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        <h2 class="text-center fw-light">All Products List</h2><br>
+        <h2 class="text-center fw-light" style="font-family: 'Bree Serif', serif;">All Products List</h2><br>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             
             @foreach($products as $product)
@@ -30,13 +33,13 @@
                     <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" height="250px">
 
                     <div class="card-body">
-                        <p class="h3">{{ $product->name }}</p>
-                        <p class="card-text">{{ $product->desc }}</p>
+                        <p class="h3" style="font-family: 'Bree Serif', serif;">{{ $product->name }}</p>
+                        <p class="card-text" style="font-family: 'Bree Serif', serif;">{{ $product->desc }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-success disabled">BDT - {{ $product->price }}</button>
+                                <button style="font-family: 'Bree Serif', serif;" type="button" class="btn btn-success disabled">BDT - {{ $product->price }}</button>
                             </div>
-                            <a href="{{ route('add.cart',$product->id) }}" class="btn btn-primary">Add To Cart</a>
+                            <a href="{{ route('add.cart',$product->id) }}" style="font-family: 'Bree Serif', serif;" class="btn btn-primary">Add To Cart</a>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\backend\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,25 +18,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 
-Route::get('login', [\App\Http\Controllers\Backend\LoginController::class, 'login'])->name('login');
-Route::post('login', [\App\Http\Controllers\Backend\LoginController::class, 'doLogin']);
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'dologin']);
 
-Route::get('register',[\App\Http\Controllers\Frontend\UserController::class,'register'])->name('register');
-Route::post('register',[\App\Http\Controllers\Frontend\UserController::class,'doRegister']);
+Route::get('register',[App\Http\Controllers\Frontend\UserController::class,'register'])->name('register');
+Route::post('register',[App\Http\Controllers\Frontend\UserController::class,'doRegister']);
 
 Route::middleware('auth')->group(function () {
     //profile
-    Route::get('profile',[\App\Http\Controllers\Frontend\UserController::class,'profile'])->name('user.profile');
-    Route::post('profile',[\App\Http\Controllers\Frontend\UserController::class,'updateProfile']);
+    Route::get('profile', [\App\Http\Controllers\Frontend\UserController::class, 'profile'])->name('user.profile');
+    Route::post('profile', [\App\Http\Controllers\Frontend\UserController::class, 'updateProfile']);
 
     // Add To Cart
-    Route::get('add/cart/{id}',[\App\Http\Controllers\Frontend\CartController::class,'cart'])->name('add.cart');
-    Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'show'])->name('add.cart.show');
+    Route::get('add/cart/{id}', [\App\Http\Controllers\Frontend\CartController::class, 'cart'])->name('add.cart');
+    Route::get('cart', [\App\Http\Controllers\Frontend\CartController::class, 'show'])->name('add.cart.show');
 
 
     Route::get('logout', [\App\Http\Controllers\Backend\LoginController::class, 'logout'])->name('logout');
     Route::prefix('dashboard')->group(function () {
-        Route::middleware('isAdmin')->group(function () {
+        Route::middleware('IsAdmin')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('profile', [\App\Http\Controllers\Backend\LoginController::class, 'profile'])->name('profile');
             Route::get('/products', [\App\Http\Controllers\Backend\ProductController::class, 'index'])->name('admin.product');
