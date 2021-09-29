@@ -57,7 +57,9 @@
                 <p>No Product Added to the cart! Please Add <a href="{{ route('home') }}">Products</a> to the cart</p>     
             </div>
         @else
-            <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
+            <a href="{{ route('checkout') }}" class="btn btn-success btn-lg" style="font-family: 'Bree Serif', serif;">
+                Checkout
+            </a>
         @endif     
     </div>
 </div>

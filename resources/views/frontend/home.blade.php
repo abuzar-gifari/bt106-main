@@ -23,7 +23,7 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        <h2 class="text-center fw-light" style="font-family: 'Bree Serif', serif;">All Products List</h2><br>
+        <h2 class="text-center fw-light" style="font-family: 'Bree Serif', serif;">All Products List</h2><hr><br>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             
             @foreach($products as $product)
