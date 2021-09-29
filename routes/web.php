@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::get('add/cart/{id}', [\App\Http\Controllers\Frontend\CartController::class, 'cart'])->name('add.cart');
     Route::get('cart', [\App\Http\Controllers\Frontend\CartController::class, 'show'])->name('add.cart.show');
 
+    //checkout url
+    Route::get('checkout',[\App\Http\Controllers\Frontend\CartController::class, 'checkout'])->name('checkout');
+    Route::post('order',[\App\Http\Controllers\Frontend\CartController::class, 'order'])->name('order');
+
 
     Route::get('logout', [\App\Http\Controllers\Backend\LoginController::class, 'logout'])->name('logout');
     Route::prefix('dashboard')->group(function () {

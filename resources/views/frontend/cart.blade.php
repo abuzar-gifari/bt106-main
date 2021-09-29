@@ -51,7 +51,14 @@
                         <td>{{ $total_price }} BDT</td>
                     </tr>
             </tbody>
-        </table>        
+        </table>   
+        @if ($total_quantity==0)
+            <div class="btn-warning">
+                <p>No Product Added to the cart! Please Add <a href="{{ route('home') }}">Products</a> to the cart</p>     
+            </div>
+        @else
+            <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
+        @endif     
     </div>
 </div>
 
