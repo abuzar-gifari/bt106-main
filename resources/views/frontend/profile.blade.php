@@ -42,6 +42,34 @@
                 <button type="submit" style="font-family: 'Inconsolata', monospace;" class="btn btn-primary">Update</button>
             </form>
         </div>
+        <div class="col-md-6">
+            <h2 class="text-center">Order List</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Order NO</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Order Status</th>
+                    <th scope="col">View</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($orders as $key=>$order)
+                <tr>
+                    <td>{{$order->truck_no}}</td>
+                    <td>{{$order->price}}</td>
+                    <td>{{$order->created_at->format('Y-m-d')}}</td>
+                    <td>{{$order->status}}</td>
+                    <td>
+                        <a href="{{route('order.show',$order->id)}}" class="btn btn-primary btn-sm">View</a>
+                    </td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection

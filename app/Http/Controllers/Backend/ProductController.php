@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index(){
         //dd('ok');
-        $products=Product::orderBy('id','desc')->get();
+        $products=Product::orderBy('id','desc')->paginate(5);
         //dd($products);
         return view('backend.products.index',compact('products'));
     }

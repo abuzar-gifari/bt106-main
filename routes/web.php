@@ -33,10 +33,17 @@ Route::middleware('auth')->group(function () {
     Route::get('add/cart/{id}', [\App\Http\Controllers\Frontend\CartController::class, 'cart'])->name('add.cart');
     Route::get('cart', [\App\Http\Controllers\Frontend\CartController::class, 'show'])->name('add.cart.show');
 
+
+    Route::get('order/{id}', [\App\Http\Controllers\Frontend\CartController::class, 'orderShow'])->name('order.show');
+
+
     //checkout url
     Route::get('checkout',[\App\Http\Controllers\Frontend\CartController::class, 'checkout'])->name('checkout');
     Route::post('order',[\App\Http\Controllers\Frontend\CartController::class, 'order'])->name('order');
 
+    //remove cart item
+    Route::get('deletecartitem',[\App\Http\Controllers\Frontend\CartController::class, 'deletecartitem'])->name('deletecartitem');
+    
 
     Route::get('logout', [\App\Http\Controllers\Backend\LoginController::class, 'logout'])->name('logout');
     Route::prefix('dashboard')->group(function () {
@@ -53,6 +60,17 @@ Route::middleware('auth')->group(function () {
             Route::get('users', [\App\Http\Controllers\Backend\UserController::class, 'index'])->name('admin.user');
             Route::get('users/create', [\App\Http\Controllers\Backend\UserController::class, 'create'])->name('admin.user.create');
             Route::post('users/create', [\App\Http\Controllers\Backend\UserController::class, 'store']);
+        
+            //order management from admin panel
+
+            Route::get('orders', [\App\Http\Controllers\Backend\OrderController::class, 'index'])->name('admin.order');
+            Route::get('orders/{id}', [\App\Http\Controllers\Backend\OrderController::class, 'show'])->name('admin.order.show');
+            Route::post('orders/{id}', [\App\Http\Controllers\Backend\OrderController::class, 'update']);
+            
+        
+        
+        
+        
         });
     });
 });

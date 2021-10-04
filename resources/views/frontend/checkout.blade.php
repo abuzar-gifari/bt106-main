@@ -82,6 +82,18 @@
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email"  value="{{ auth()->user()->email }}" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
                 </div>
+                <div class="mb-3">
+                    <label for="payment_method" class="form-label">Payment Method</label>
+                    <select name="payment_method" id="payment_method" class="form-control">
+                        <option value="Bkash">Bkash</option>
+                        <option value="Rocket">Rocket</option>
+                        <option value="Nogod">Nogod</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="txn_id" class="form-label">Transaction ID</label>
+                    <input type="text" class="form-control" name="txn_id" id="txn_id">
+                </div>
                 <input type="hidden" value="{{ $total_price }}" name="price">
                 <input type="hidden" value="{{ $total_quantity }}" name="quantity">
                 <button type="submit" class="btn btn-primary">Place Order</button>

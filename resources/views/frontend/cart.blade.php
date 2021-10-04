@@ -11,14 +11,14 @@
     <div class="col-md-6">
         <h2 class="text-center mt-3"  style="font-family: 'Bree Serif', serif;">Your Cart</h2><br>
         <table class="table" 
-            style="font-family: 'Bree Serif', serif; background-color: whitesmoke;"
-        >
+            style="font-family: 'Bree Serif', serif; background-color: whitesmoke;">
             <thead class="text-center">
               <tr>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total Price</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody class="text-center">
@@ -35,6 +35,7 @@
                         <td>{{ $cart['price'] }} BDT</td>
                         <td>{{ $cart['quantity'] }}</td>
                         <td>{{ $cart['price']*$cart['quantity'] }} BDT</td>
+                        <td><a href="{{ route('deletecartitem') }}" class="btn btn-sm btn-danger">Remove Item</a></td>
                     </tr>   
                     
                     @php

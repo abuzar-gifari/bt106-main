@@ -53,8 +53,9 @@ class CartController extends Controller
             'quantity'=>$request->input('quantity'),
             'truck_no'=>auth()->user()->id.time(),
             'user_id'=>auth()->user()->id,
+            'payment_method'=>$request->input('payment_method'),
+            'txn_id'=>$request->input('txn_id'),
             'status'=>'Pending'
-
         ];
 
         $carts = session()->has('cart') ? session()->get('cart') : [];
@@ -80,5 +81,14 @@ class CartController extends Controller
     public function checkout() {
         $carts = session()->has('cart') ? session()->get('cart') : [];
         return view('frontend.checkout',compact('carts'));
+    }
+
+    public function deletecartitem(){
+        
+    }
+
+    public function orderShow($id){
+        $order= Order::find($id);
+        return view('frontend.order',compact('order'));
     }
 }
