@@ -1,8 +1,12 @@
 @extends('layouts.backend')
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+
 @section('main')
 
-    <div class="container mt-3">
+    <div class="container mt-3"  style="font-family: 'Bree Serif', serif;">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">

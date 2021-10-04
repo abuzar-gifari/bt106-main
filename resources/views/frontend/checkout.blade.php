@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-
+ 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 </style>

@@ -12,8 +12,8 @@
 <section class="py-5 text-center container" style="font-family: 'Bree Serif', serif;">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <h1 class="fw-light">Neque porro quisquam est</h1>
+        <p class="lead text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <p>
           <a href="{{ route('add.cart.show') }}" class="btn btn-primary my-2">Show Cart Page</a>
         </p>

@@ -1,6 +1,11 @@
 @extends('layouts.backend')
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+
 @section('main')
-    <div class="container mt-3">
+    <div class="container mt-3"  style="font-family: 'Bree Serif', serif;">
         <h2 class="text-center">Products List</h2>
         <a href="{{route('admin.product.create')}}" class="btn btn-success" target="_blank">Create New Product</a>
         <table class="table">

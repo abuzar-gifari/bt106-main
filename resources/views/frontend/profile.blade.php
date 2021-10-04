@@ -1,13 +1,17 @@
 @extends('layouts.frontend')
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+
 @section('main')
-<div class="container">
+<div class="container" style="font-family: 'Bree Serif', serif;">
     <div class="row align-items-center mt-5">
         <div class="col-md-6"><br>
             
-            <form action="{{route('user.profile')}}" method="post" enctype="multipart/form-data" class="" style="padding: 40px; border-radius: 2%; background-color: whitesmoke ">
+            <form action="{{route('user.profile')}}" method="post" enctype="multipart/form-data" class="">
                 @csrf
-                <h3 class="text-center h2" style="font-family: 'Inconsolata', monospace;">Update Your Profile</h3><br>
+                <h3 class="text-center h2">Update Your Profile</h3><br>
                 <h5 class="text-center">User Profile Photo</h5>
                 <img src="{{ asset('uploads/user/'.auth()->user()->photo) }}" style="height: 120px;" class="rounded mx-auto d-block"><br><br>
                 @if ($errors->any())
@@ -20,26 +24,26 @@
                     </div>
                 @endif
                 <div class="mb-3">
-                    <label for="name" style="font-family: 'Inconsolata', monospace;" class="form-label">Full Name</label>
+                    <label for="name" class="form-label">Full Name</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" value="{{ auth()->user()->name }}">
                 </div>
                 <div class="mb-3">
-                    <label for="phone" style="font-family: 'Inconsolata', monospace;" class="form-label">Phone Number</label>
+                    <label for="phone" class="form-label">Phone Number</label>
                     <input type="text" class="form-control" name="phone" id="phone" aria-describedby="emailHelp" value="{{ auth()->user()->phone }}">
                 </div>
                 <div class="mb-3">
-                    <label for="address" style="font-family: 'Inconsolata', monospace;" class="form-label">Address</label>
+                    <label for="address" class="form-label">Address</label>
                     <textarea name="address" id="address" class="form-control">{{ auth()->user()->address }}</textarea>    
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" style="font-family: 'Inconsolata', monospace;" class="form-label">Email address</label>
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ auth()->user()->email }}" readonly>
                 </div>
                 <div class="mb-3">
-                    <label for="photo" style="font-family: 'Inconsolata', monospace;" class="form-label">Photo</label>
+                    <label for="photo" class="form-label">Photo</label>
                     <input type="file" class="form-control" name="photo" id="photo">
                 </div>
-                <button type="submit" style="font-family: 'Inconsolata', monospace;" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
         <div class="col-md-6">

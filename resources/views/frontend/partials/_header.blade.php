@@ -1,4 +1,8 @@
-<header>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+</style>
+
+<header style="font-family: 'Bree Serif', serif;">
     <div class="collapse bg-dark" id="navbarHeader">
       <div class="container">
         <div class="row">
@@ -35,4 +39,4 @@
         </button>
       </div>
     </div>
-  </header>
+</header>
