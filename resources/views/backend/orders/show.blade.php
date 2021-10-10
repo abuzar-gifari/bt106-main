@@ -47,7 +47,7 @@
                     @endforeach
                 </tbody>
             </table>
-<br>
+<br>  
             <form action="{{route('admin.order.show',$order->id)}}" method="post">
                 @csrf
                 <div class="mb-3">

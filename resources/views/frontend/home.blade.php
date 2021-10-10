@@ -15,7 +15,7 @@
         <h1 class="fw-light">Neque porro quisquam est</h1>
         <p class="lead text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <p>
-          <a href="{{ route('add.cart.show') }}" class="btn btn-primary my-2">Show Cart Page</a>
+          <a href="{{ route('add.cart.show') }}" class="btn btn-primary my-2">Show Cart ({{ $total_quantity }})</a>
         </p>
       </div>
     </div>

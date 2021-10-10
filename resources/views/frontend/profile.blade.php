@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-
+ 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 </style>
@@ -14,15 +14,7 @@
                 <h3 class="text-center h2">Update Your Profile</h3><br>
                 <h5 class="text-center">User Profile Photo</h5>
                 <img src="{{ asset('uploads/user/'.auth()->user()->photo) }}" style="height: 120px;" class="rounded mx-auto d-block"><br><br>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+            
                 <div class="mb-3">
                     <label for="name" class="form-label">Full Name</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" value="{{ auth()->user()->name }}">
@@ -77,3 +69,4 @@
     </div>
 </div>
 @endsection
+ 

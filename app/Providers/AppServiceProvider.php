@@ -22,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // Globally declare
+
     public function boot()
     {
         Paginator::useBootstrap();

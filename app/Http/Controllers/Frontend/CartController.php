@@ -6,8 +6,10 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -74,6 +76,10 @@ class CartController extends Controller
         }
 
         session()->forget('cart');
+    
+        // Note : "Mail::" is a facade;
+        Mail::to(auth()->user()->email)->send(new OrderMail($order));
+
         return redirect()->route('profile');
 
     }
@@ -81,10 +87,6 @@ class CartController extends Controller
     public function checkout() {
         $carts = session()->has('cart') ? session()->get('cart') : [];
         return view('frontend.checkout',compact('carts'));
-    }
-
-    public function deletecartitem(){
-        
     }
 
     public function orderShow($id){
