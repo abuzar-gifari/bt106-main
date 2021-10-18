@@ -41,11 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::get('checkout',[\App\Http\Controllers\Frontend\CartController::class, 'checkout'])->name('checkout');
     Route::post('order',[\App\Http\Controllers\Frontend\CartController::class, 'order'])->name('order');
 
-    //remove cart item
-    Route::get('deletecartitem',[\App\Http\Controllers\Frontend\CartController::class, 'deletecartitem'])->name('deletecartitem');
-    
 
     Route::get('logout', [\App\Http\Controllers\Backend\LoginController::class, 'logout'])->name('logout');
+    
+    
     Route::prefix('dashboard')->group(function () {
         Route::middleware('IsAdmin')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -61,16 +60,12 @@ Route::middleware('auth')->group(function () {
             Route::get('users/create', [\App\Http\Controllers\Backend\UserController::class, 'create'])->name('admin.user.create');
             Route::post('users/create', [\App\Http\Controllers\Backend\UserController::class, 'store']);
         
-            //order management from admin panel
+            // ORDER MANAGEMENT FROM ADMIN PANEL.
 
             Route::get('orders', [\App\Http\Controllers\Backend\OrderController::class, 'index'])->name('admin.order');
             Route::get('orders/{id}', [\App\Http\Controllers\Backend\OrderController::class, 'show'])->name('admin.order.show');
             Route::post('orders/{id}', [\App\Http\Controllers\Backend\OrderController::class, 'update']);
-            
-        
-        
-        
-        
+  
         });
     });
 });
