@@ -35,7 +35,7 @@
                         <td>{{ $cart['price'] }} BDT</td>
                         <td>{{ $cart['quantity'] }}</td>
                         <td>{{ $cart['price']*$cart['quantity'] }} BDT</td>
-                        <td><a href="{{ route('deletecartitem') }}" class="btn btn-sm btn-danger">Remove Item</a></td>
+                        {{-- <td><a href="{{ route('deletecartitem') }}" class="btn btn-sm btn-danger">Remove Item</a></td> --}}
                     </tr>   
                     
                     @php
