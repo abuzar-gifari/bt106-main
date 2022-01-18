@@ -30,7 +30,8 @@
             <div class="col">
                 <div class="card shadow-sm">
                     
-                    <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" height="250px">
+                    {{-- <img src="{{asset('uploads/products/'.$product->photo)}}" alt="" height="250px"> --}}
+                    <img src="{{$product->photo}}" alt="" height="250px">
 
                     <div class="card-body">
                         <p class="h3" style="font-family: 'Bree Serif', serif;">{{ $product->name }}</p>

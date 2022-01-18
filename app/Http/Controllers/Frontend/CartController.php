@@ -75,6 +75,13 @@ class CartController extends Controller
             ]);
         }
 
+        // We can't use dd() inside foreach loop, rather we can use,
+        // The correct method is:
+        // foreach($carts as $cart) {
+        //     dump();
+        // }
+        // die();
+
         session()->forget('cart');
     
         // Note : "Mail::" is a facade;

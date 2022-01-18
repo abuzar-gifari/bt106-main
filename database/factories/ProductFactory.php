@@ -22,7 +22,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=>$this->faker->name(),
+            'price'=>$this->faker->randomNumber(3),
+            'desc'=>$this->faker->realText(50),
+            'photo'=>$this->faker->imageUrl()
         ];
     }
 }
+// factory er vitore "faker" ke extend kora hoyeche
