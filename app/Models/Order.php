@@ -15,7 +15,7 @@ class Order extends Model
     
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id'); // (className, foreign_key, local_key)
     }
 
     public function details()
@@ -23,3 +23,4 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class, 'order_id', 'id');
     }
 }
+// php artisan make:model Order -m (model + migration)

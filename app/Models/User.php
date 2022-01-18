@@ -19,3 +19,5 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
 }
+
+// user (parent)  ||  order (child)
