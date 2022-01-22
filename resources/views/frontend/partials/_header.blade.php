@@ -14,8 +14,7 @@
             <ul class="list-unstyled">
 
               @if (auth()->user())
-                <li><a href="{{ route('user.profile') }}" class="text-white">Profile</a></li>
-                <a href="{{ route('add.cart.show') }}"><i class="fas fa-shopping-cart" style="height: 20px; color:red; margin-top: 10px"> ( {{ $total_quantity }} ) </i></a> 
+                <li><a href="{{ route('user.profile') }}" class="text-white">Profile</a></li> 
                 <li><a href="{{ route('logout') }}" class="text-white">Log Out</a></li>
               @else
                 <li><a href="{{ route('register') }}" class="text-white">Register</a></li>

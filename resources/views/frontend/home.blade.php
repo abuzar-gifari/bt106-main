@@ -14,14 +14,19 @@
 <section class="py-5 text-center container" style="font-family: 'Bree Serif', serif;">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light" style="font-family: 'Orienta', sans-serif;">Neque porro quisquam est</h1>
-        <p class="lead text-muted" style="font-family: 'Orienta', sans-serif;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        <p>
-          {{-- <a href="{{ route('add.cart.show') }}" class="btn btn-primary my-2">Show Cart ({{ $total_quantity }})</a> --}}
+        <h1 class="fw-light" style="font-family: 'Orienta', sans-serif;">Welcome to AmarShopBD</h1>
+        <p class="lead text-muted" style="font-family: 'Orienta', sans-serif;">
+        
+            AmarShopBD is an online e-commerce site that sells all kinds of essentials in a very simple way, this online marketplace has been working successfully for over 2 years now and has gained worldwide reputation. There are 30+ categories of products that can meet the daily needs of the people, we try our best to help our customers.
+        
         </p>
+        <a href="{{ route('add.cart.show') }}"><i class="fas fa-shopping-cart" style="height: 20px; color:red; margin-top: 10px"> ( {{ $total_quantity }} ) </i></a>
       </div>
     </div>
 </section>
+
+
+
 
 <div class="album py-5 bg-light">
     <div class="container">
