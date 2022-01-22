@@ -9,7 +9,7 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>@yield('title') - {{ config('app.name') }}</title>
 
-    
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
